@@ -1,0 +1,686 @@
+/*******************************************************************************************
+ * define
+ *******************************************************************************************/
+
+/*** theme colors ***/
+$theme-colors: (
+  'dark': #323232,
+  'light': #F0F0F0,
+  'gray': #ccc,
+  'red': #E7BABB,
+  'green': #ABDFB2,
+  'blue': #ACCCE5,
+  'yellow': #FFD699
+);
+
+/*** darken theme colors ***/
+$theme-darken-colors: (
+  'red': darken(map-get($theme-colors, 'red'), 15%),
+  'green': darken(map-get($theme-colors, 'green'), 15%),
+  'blue': darken(map-get($theme-colors, 'blue'), 15%),
+  'yellow': darken(map-get($theme-colors, 'yellow'), 15%)
+);
+
+/*** responsive grid ***/
+$split-grid: 12;
+
+/*** header height ***/
+$header-height: 12px;
+
+/*** responsive pc ***/
+@mixin desktop {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+/*** clear defaults ***/
+html, body, h1, h2, h3, h4, h5, h6, a, p, span, em, small, strong, sub, sup, mark, del, ins, strike, abbr, dfn, blockquote, q, cite, code, pre, ol, ul, li, dl, dt, dd, div, section, article, main, aside, nav, header, hgroup, footer, img, figure, figcaption, address, time, audio, video, canvas, iframe, details, summary, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,body, main {
+  width: 100%; height: 100%;
+}
+
+body {
+  font-size: 62.5%;
+  background-color: map-get($theme-colors, 'light');
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+header {
+  display: flex;
+  display: -webkit-flex;
+  position: fixed;
+  width: 100%; height: $header-height;
+  left: 0; top: 0;
+  z-index: 10;
+  opacity: 0;
+  animation: header-in 1s ease 2.7s forwards;
+  transform-origin: left;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  div{
+    width: 25%;
+    &:nth-child(1){
+      background-color: map-get($theme-darken-colors, 'red');
+    }
+    &:nth-child(2){
+      background-color: map-get($theme-darken-colors, 'yellow');
+    }
+    &:nth-child(3){
+      background-color: map-get($theme-darken-colors, 'green');
+    }
+    &:nth-child(4){
+      background-color: map-get($theme-darken-colors, 'blue');
+    }
+  }
+}
+
+p {
+  font-size: 2em;
+  border: none;
+  @include desktop {
+    font-size: 2.6em;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: map-get($theme-colors, 'dark' );
+  &:hover {
+    color: map-get($theme-colors, 'dark' );
+    text-decoration: none;
+  }
+}
+
+/*******************************************************************************************
+ * common
+ *******************************************************************************************/
+ .vertical {
+  &-center {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+  &-middle {
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content:space-between;
+  }
+}
+
+@for $count from 1 through $split-grid {
+  .col-#{$count} {
+    flex: 0 0 100% / $split-grid * $count;
+    max-width: 100% / $split-grid * $count;
+  }
+  .offset-#{$count} {
+    flex: 0 0 100% / $split-grid * $count;
+    max-width: 100% / $split-grid * $count;
+    visibility: hidden;
+  }
+  .col-lg-#{$count} {
+    @include desktop {
+      flex: 0 0 100% / $split-grid * $count;
+      max-width: 100% / $split-grid * $count;
+    }
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.text-center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  @include desktop {
+    display: flex !important;
+  }
+}
+
+.d {
+  &-block {
+    display: block;
+    @include desktop {
+      display: none;
+    }
+  }
+  &-lg-block {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+  }
+  &-none {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+  }
+  &-lg-none {
+    display: block;
+    @include desktop {
+      display: none;
+    }
+  }
+}
+
+.scroll-area {
+  overflow-y: scroll;
+}
+
+.m-t-md {
+  margin-top: 30px;
+  @include desktop {
+    margin-top: 60px;
+  }
+}
+.m-b-md {
+  margin-bottom: 30px;
+  @include desktop {
+    margin-bottom: 60px;
+  }
+}
+
+/*** font awesome ***/
+.fas {
+  color: map-get($theme-colors, dark );
+}
+
+/*******************************************************************************************
+ * main
+ *******************************************************************************************/
+
+#stage {
+  position: relative;
+  width: 100%; height: 100%;
+  font-family: "じゅん 501" , serif;
+  overflow: hidden;
+  animation: opacity 0.4s ease 0.0s forwards reverse;
+  z-index: 0;
+}
+
+.first-view {
+  position: absolute;
+  width: 100%; height: 100%;
+}
+
+.stage-title {
+  font-family: "じゅん 501" , serif;
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13vw;
+  color: map-get($theme-colors, 'dark');
+  animation: opacity 0.5s ease 2.1s forwards;
+  z-index: 3;
+  @include desktop {
+    font-size: 10vw;
+  }
+}
+
+.menu {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  opacity: 0;
+  animation: slide-in-bottom 0.5s ease 2.6s forwards;
+  &__title {
+    font-size: 13vw;
+    color: map-get($theme-colors, 'dark');
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 28%;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    &::first-letter {
+      font-size: 115%;
+    }
+    @include desktop {
+      font-size: 6.2em;
+      margin-bottom: 23%;
+    }
+    &:nth-child(1) {
+      // border-bottom: solid map-get($theme-darken-colors, red) 0.1em;
+      // animation: beat 1.5s ease-in 3.6s forwards;
+      &::first-letter {
+        color: map-get($theme-darken-colors, 'red');
+      }
+    }
+    &:nth-child(2) {
+      // border-bottom: solid map-get($theme-darken-colors, yellow) 0.1em;
+      // animation: beat 1.5s ease-in 5.1s forwards;
+      &::first-letter {
+        color: map-get($theme-darken-colors, 'yellow');
+      }
+    }
+    &:nth-child(3) {
+      // border-bottom: solid map-get($theme-darken-colors, green) 0.1em;
+      // animation: beat 1.5s ease-in 6.6s forwards;
+      &::first-letter {
+        color: map-get($theme-darken-colors, 'green');
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+      // border-bottom: solid map-get($theme-darken-colors, blue) 0.1em;
+      // animation: beat 1.5s ease-in 8.1s forwards;
+      &::first-letter {
+        color: map-get($theme-darken-colors, 'blue');
+      }
+    }
+  }
+}
+
+.page {
+  display: block;
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  padding-top: $header-height;
+  z-index: 3;
+  // background-color: map-get($theme-darken-colors, red);
+  transform: scale(0);
+  overflow-y: scroll;
+  &:-webkit-scroll-bar {
+    display: none;
+  }
+  &-about {
+    background-color: map-get($theme-darken-colors, 'red');
+  }
+  &-skill {
+    background-color: map-get($theme-darken-colors, 'yellow');
+  }
+  &-works {
+    background-color: map-get($theme-darken-colors, 'green');
+  }
+  &-contact {
+    background-color: map-get($theme-darken-colors, 'blue');
+  }
+  &__title {
+    height: 10%;
+    font-size: 4.2em;
+    color: map-get($theme-colors, 'dark');
+    font-weight: bold;
+    margin-bottom: 5%;
+    @include desktop {
+      margin-bottom: 5%;
+    }
+  }
+}
+
+.close {
+  position: fixed;
+  display: flex;
+  top: $header-height + 24px; left: 20px;;
+  width: 42px; height: 42px;
+  padding: 7px;
+  font-size: 24px;
+  color: #323232;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  &-about {
+    background-color: map-get($theme-colors, 'red' );
+  }
+  &-skill {
+    background-color: map-get($theme-colors, 'yellow' );
+  }
+  &-works {
+    background-color: map-get($theme-colors, 'green' );
+  }
+  &-contact {
+    background-color: map-get($theme-colors, 'blue' );
+  }
+}
+
+/*** About ***/
+.contents {
+  position: fixed;
+  top: 0; left: 0;
+  padding-top: 30px;
+  width: 100%; height: auto;
+  min-height: 110%;
+  background-color: map-get($theme-colors, 'light' );
+  opacity: 0;
+  padding-left: 10%; padding-right: 10%;
+  @include desktop {
+    padding-left: 12.5%; padding-right: 12.5%;
+  }
+  &:-webkit-scrollbar {
+    display: none;
+  }
+  &-texts {
+    width: 100%; height: auto;
+    margin-top: 2.5em;
+    text-align: left;
+    color: map-get($theme-colors, 'dark' );
+    @include desktop {
+      height: 100%;
+      margin-top: 0;
+    }
+    & > p {
+      font-size: 2em;
+      @include desktop {
+        font-size: 2.6em;
+        letter-spacing: 150%;
+      }
+      &:last-child {
+        margin-bottom: 30px;
+        @include desktop {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  &-h {
+    position: relative;
+    line-height: 1.4;
+    padding: 0.25em 1em;
+    margin-bottom: 30px;
+    display: inline-block;
+    font-weight: bold;
+    &:before , &:after {
+      content:'';
+      width: 20px;
+      height: 30px;
+      position: absolute;
+      display: inline-block;
+    }
+    &:before {
+      border-left: solid 2px map-get($theme-darken-colors, 'red' );
+      border-top: solid 2px map-get($theme-darken-colors, 'red' );
+      top:0;
+      left: 0;
+    }
+    &:after {
+      border-right: solid 2px map-get($theme-darken-colors, 'red' );
+      border-bottom: solid 2px map-get($theme-darken-colors, 'red' );
+      bottom:0;
+      right: 0;
+    }
+  }
+}
+
+.profile {
+  &-icon {
+    width: 100％; height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    text-align: center;
+    // border: double 8px map-get($theme-colors, gray );
+    box-sizing: unset;
+    @include desktop {
+      max-height: 410px;
+    }
+    & > img {
+      width: 100%; height: auto;
+      object-fit: contain;
+      max-width: 410px;
+    }
+    @include desktop {
+      padding-right: 50px;
+    }
+  }
+}
+
+/*** Skill ***/
+$circle-size: 120px;
+
+$lang-colors: (
+  'html': #e54c22,
+  'css': #1958a8,
+  'php': #7578af,
+  'js': #ffd93e,
+  'sass': #C96196
+);
+
+$lang-percent: (
+  'html': 90,
+  'css': 100,
+  'php': 80,
+  'js': 70,
+  'sass': 20
+);
+
+.circle {
+  position: relative;
+  width: $circle-size; height: $circle-size;
+  background: #e54c22;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  margin: 0;
+  @include desktop {
+    width: $circle-size * 2; height: $circle-size * 2;
+  }
+  @each $name, $color in $lang-colors {
+    &-#{$name} {
+      background-color: $color;
+      &::before , &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        width: $circle-size; height: $circle-size;
+        background-color: lighten($color, 20);
+        @include desktop {
+          width: $circle-size * 2; height: $circle-size * 2;
+        }
+      }
+      &::before {
+        left: $circle-size / 2 * -1;
+        transform-origin: right $circle-size / 2;
+        z-index: 2;
+        animation: rotate-circle-left__#{$name} 0.75s linear 1.0s forwards;
+        @include desktop {
+          left: ($circle-size / 2 * -1) * 2;
+          transform-origin: right ($circle-size / 2) * 2;
+        }
+      }
+      &::after {
+        left: $circle-size / 2;
+        transform-origin: left $circle-size / 2;
+        z-index: 3;
+        animation: rotate-circle-right__#{$name} 0.75s linear 1.0s forwards;
+        @include desktop {
+          left: ($circle-size / 2) * 2;
+          transform-origin: left ($circle-size / 2) * 2;
+        }
+      }
+    }
+  }
+}
+
+.circle .circle-inner {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: $circle-size - 20px;
+  height: $circle-size - 20px;
+  background: map-get( $theme-colors, 'light' );
+  border-radius: 50%;
+  z-index: 4;
+  font-size: 24px;
+  @include desktop {
+    width: $circle-size * 2 - 20px;
+    height: $circle-size * 2 - 20px;
+    font-size: 48px;
+  }
+}
+
+.circle-margin {
+  margin-top: $circle-size / 2;
+  @include desktop {
+    margin-top: $circle-size + 50px;
+  }
+}
+
+/*** Works ***/
+.works {
+  &-frame {
+    border: solid 1.5px map-get($theme-darken-colors, 'green' );
+    border-radius: 10px;
+    padding: 7.5px;
+    background-color: #FCFCFC;
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+  }
+  &-img {
+    width: 100%; height: auto;
+    max-height: 412px;
+    & > img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+  }
+  &-title {
+    font-size: 2.5vw;
+    text-align: left;
+    margin: 7.5px 0;
+    padding-bottom: 7.5px;
+    border-bottom: solid 1px map-get($theme-colors, 'green' );
+    font-weight: bold;
+  }
+  &-description {
+    font-size: 1.8vw;
+    text-align: left;
+    margin: 7.5px 0;
+    padding-bottom: 7.5px;
+    border-bottom: solid 1px map-get($theme-colors, 'green' );
+  }
+  &-skill-list {
+    text-align: left;
+    padding-left: 20px;
+    & > ul > li {
+      font-size: 18px;
+      line-height: 1.5;
+      // padding: 0.5em 0;
+    }
+  }
+}
+
+/*** first view motion ***/
+.motion-rotate,
+.motion-rotate div {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 250%;
+  z-index: 2;
+}
+
+/*** first view motion-rotate ***/
+.motion-rotate div { transform-origin: right top; transform: rotate(0deg);  }
+.motion-rotate div:nth-child(1) { background-color: map-get($theme-darken-colors, 'red'); }
+.motion-rotate div:nth-child(2) { background-color: map-get($theme-darken-colors, 'yellow'); }
+.motion-rotate div:nth-child(3) { background-color: map-get($theme-darken-colors, 'green'); }
+.motion-rotate div:nth-child(4) { background-color: map-get($theme-darken-colors, 'blue'); }
+
+/*** page in motion ***/
+.motion-page__in { transform-origin: right; }
+
+/*******************************************************************************************
+ * animation
+ *******************************************************************************************/
+.motion-rotate div:nth-child(1) { animation: rotate 0.6s ease-in-out 2.1s forwards; }
+.motion-rotate div:nth-child(2) { animation: rotate 0.6s ease-in-out 1.8s forwards; }
+.motion-rotate div:nth-child(3) { animation: rotate 0.6s ease-in-out 1.5s forwards; }
+.motion-rotate div:nth-child(4) { animation: rotate 0.6s ease-in-out 1.2s forwards; }
+
+.motion-page__in { animation: page-in 0.75s ease-out 0.0s forwards; }
+
+.motion-contents__in { animation: slide-in-bottom 0.6s ease-out 0.5s forwards; }
+
+/*******************************************************************************************
+ * keyframes
+ *******************************************************************************************/
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(90deg); }
+}
+
+@keyframes opacity {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes header-in {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes page-in {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes slide-in-bottom {
+  from { transform: translateY(400px);}
+  50%  { opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; z-index: 3; }
+}
+
+@keyframes beat {
+  from { transform: scale(1); transform-origin: center center; animation-timing-function: ease-out; }
+  10% { transform: scale(0.91); animation-timing-function: ease-in; }
+  17% { transform: scale(0.98); animation-timing-function: ease-out; }
+  33% { transform: scale(0.85); animation-timing-function: ease-in; }
+  45% { transform: scale(1); animation-timing-function: ease-out; }
+}
+
+@each $name, $color in $lang-colors {
+  @keyframes rotate-circle-right__#{$name} {
+    from {
+        transform: rotate(0deg);
+        background-color: lighten($color, 20);
+    }
+    50%  {
+        transform: rotate(180deg);
+        background-color: lighten($color, 20);
+    }
+    50.01% {
+        transform: rotate(360deg);
+        background: $color;
+    }
+    to {
+        transform: rotate(360deg);
+        background: $color;
+    }
+  } 
+}
+
+@each $name, $point in $lang-percent {
+  @keyframes rotate-circle-left__#{$name} {
+    from { transform: rotate(0deg); }
+    50%  { transform: rotate(0deg); }
+    to   { transform: rotate($point+deg); }
+  } 
+}

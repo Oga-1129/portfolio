@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="theme-color" content="#000">
+    <title>ELELINE -Portfolio-</title>
+
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script type="text/javascript"
+src="//code.typesquare.com/static/5b0e3c4aee6847bda5a036abac1e024a/typesquare.js"
+charset="utf-8"></script>
+  </head>
+  <body>
+
+    <header>
+      <div></div><div></div><div></div><div></div>
+    </header>
+
+    <main id="stage">
+
+      <!-- First View Animation -->
+      <div class="vertical-center first-view">
+        <h1 class="stage-title">eleline.me</h1>
+      </div>
+      <div class="motion-rotate">
+        <div></div><div></div><div></div><div></div>
+      </div>
+      
+      <!-- Main Contents -->
+      <div id="apps" style="height: 100%">
+
+        <div class="vertical-center" style="height: 100%;">
+          <div class="menu">
+            <p class="menu__title" @click="openItem(1)">About</p>
+            <p class="menu__title" @click="openItem(2)">Skill</p>
+            <p class="menu__title" @click="openItem(3)">Works</p>
+            <p class="menu__title" @click="openItem(4)">Contact</p>
+          </div>
+        </div>
+
+        <!-- About -->
+        <div class="page" :class="{'page-about': modalNum === 1, 'motion-page__in': modalNum === 1}">
+          <div class="contents text-center" :class="{'motion-contents__in': isModalActive && modalNum === 1}">
+            <div class="close close-about vertical-center" @click="openItem(0)">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <p class="page__title">About</p>
+
+            <div class="d-block d-lg-none">
+              <div class="profile-icon">
+                <img src="./assets/img/icon.png">
+              </div>
+
+              <div class="contents-texts">
+                <p>名前 : eleline(FR)</p>
+                <p>出身 : 佐賀県</p>
+                <p>性別 : 男性</p>
+                <p>年齢 : 19才</p>
+                <p>趣味 : 街の散策・テニス</p>
+                <p class="contents-h m-t-md">コメント</p>
+                <p>C++から学習を始め、CUIのRPG、OpenGLを用いたシューティングゲームの制作を経て、あるときWEBプログラミングの楽しさに気づき、学習を始めました。</p>
+                <p>現在は、Linux実機にWEB開発環境を構築したり、AWSやFirebaseを触ってみたりしている。SPAのWEBアプリも検討中です。</p>
+              </div>
+            </div>
+
+            <div class="d-none d-block row">
+              <div class="col-7">
+                <div class="profile-icon">
+                  <img src="./assets/img/icon.png">
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="contents-texts vertical-middle">
+                  <p>名前 : eleline(FR)</p>
+                  <p>出身 : 佐賀県</p>
+                  <p>性別 : 男性</p>
+                  <p>年齢 : 19才</p>
+                  <p>趣味 : 街の散策・テニス</p>
+                </div>
+              </div>
+
+              <div class="m-t-md m-b-md" style="width: 70%;">
+                <p class="contents-h">コメント</p>
+                <p>C++から学習を始め、CUIのRPG、OpenGLを用いたシューティングゲームの制作を経て、あるときWEBプログラミングの楽しさに気づき、学習を始めました。</p>
+                <p>現在は、Linux実機にWEB開発環境を構築したり、AWSやFirebaseを触ってみたりしている。SPAのWEBアプリも検討中です。</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- skill -->
+        <div class="page" :class="{'page-skill': modalNum === 2, 'motion-page__in': modalNum === 2}">
+          <div class="contents text-center" :class="{'motion-contents__in': modalNum === 2}">
+            <div class="close close-skill vertical-center" @click="openItem(0)">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <p class="page__title">Skill</p>
+
+            <div class="row" style="height: 150px;">
+              <div class="col-6 vertical-center">
+                <div :class="{'circle': modalNum === 2, 'circle-html': modalNum === 2}">
+                  <div class="circle-inner vertical-center">HTML</div>
+                </div>
+              </div>
+              <div class="col-6 vertical-center">
+                <div :class="{'circle': modalNum === 2, 'circle-css': modalNum === 2}">
+                  <div class="circle-inner vertical-center">CSS</div>
+                </div>
+              </div>
+            </div>
+            <div class="row circle-margin" style="height: 150px;">
+              <div class="col-6 vertical-center">
+                <div :class="{'circle': modalNum === 2, 'circle-php': modalNum === 2}">
+                  <div class="circle-inner vertical-center">PHP</div>
+                </div>
+              </div>
+              <div class="col-6 vertical-center">
+                <div :class="{'circle': modalNum === 2, 'circle-js': modalNum === 2}">
+                  <div class="circle-inner vertical-center">JS</div>
+                </div>
+              </div>
+            </div>
+            <div class="row circle-margin" style="height: 150px;">
+              <div class="col-6 vertical-center">
+                <div :class="{'circle': modalNum === 2, 'circle-sass': modalNum === 2}">
+                  <div class="circle-inner vertical-center">Sass</div>
+                </div>
+              </div>
+              <div class="offset-6 vertical-center">
+                <div :class="{'circle': modalNum === 2, 'circle-js': modalNum === 2}">
+                  <div class="circle-inner vertical-center">none</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Works -->
+        <div class="page" :class="{'page-works': modalNum === 3, 'motion-page__in': modalNum === 3}">
+          <div class="contents text-center" :class="{'motion-contents__in': modalNum === 3}">
+            <div class="close close-works vertical-center" @click="openItem(0)">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+            <p class="page__title">Works</p>
+            <p style="font-size: 3.5vw;">カードを押すとそのサイトに飛びます</p>
+
+            <div class="d-block d-lg-none m-t-md">
+              <a href="https://eleline.me/Lycal/" target="_blank">
+                <div class="works-frame">
+                  <div class="works-img">
+                    <img src="./assets/img/works_lycal.jpg">
+                  </div>
+                  <div class="works-title">
+                    <p>地域SNS Lycal</p>
+                  </div>
+                  <div class="works-description">
+                    <p>サインアップ時に登録した地域限定のSNSです。仕様策定から始まり、1ヶ月ちょっとで、実装まで至りました。</p><br>
+                    <p>【仮アカウント】</p>
+                    <p>メールアドレス : persona@gmail.com</p>
+                    <p>パスワード : persona</p>
+                  </div>
+                  <div class="works-skill-list">
+                    <ul>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>PHP</li>
+                      <li>Vue.js(JavaScript)</li>
+                    </ul>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact 実装中 modalNum === 10 -->
+        <div class="page" :class="{'page-contact': modalNum === 4, 'motion-page__in': modalNum === 4}">
+          <div class="contents text-center" :class="{'motion-contents__in': modalNum === 4}">
+            <div class="close close-contact vertical-center" @click="openItem(0)">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+            <p class="page__title">Contact</p>
+            <p class="m-b-md" style="font-size: 3.5vw;">このページは、実装中です。</p>
+            <a class="twitter-timeline" width="100%" height="500px" data-border-color="#72A8D3" data-chrome=”transparent” href="https://twitter.com/eleline5?ref_src=twsrc%5Etfw">Tweets by eleline5</a>
+          </div>
+        </div>
+
+      </div>
+      
+    </main>
+
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script src="./assets/js/vue.min.js"></script>
+    <script>
+		  new Vue({
+		  	el: '#apps',
+
+		  	data() {
+		  		return {
+		  			modalNum: 0,
+		  			isModalActive: false
+		  		}
+		  	},
+		  	methods: {
+		  		openItem(num) {
+            if( num === 4 ) {
+              // alert("ごめんね、まだ検討中です:D");
+            }
+            this.modalNum = num;
+		  			this.toggleModal();
+		  		},
+		  		toggleModal() {
+		  			this.isModalActive = !this.isModalActive;
+		  		}
+		  	}
+		  });
+	</script>
+
+  </body>
+</html>
