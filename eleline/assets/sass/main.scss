@@ -200,6 +200,7 @@ a {
     margin-top: 60px;
   }
 }
+
 .m-b-md {
   margin-bottom: 30px;
   @include desktop {
@@ -209,7 +210,7 @@ a {
 
 /*** font awesome ***/
 .fas {
-  color: map-get($theme-colors, dark );
+  color: map-get($theme-colors, 'dark' );
 }
 
 /*******************************************************************************************
@@ -366,10 +367,11 @@ a {
   top: 0; left: 0;
   padding-top: 30px;
   width: 100%; height: auto;
-  min-height: 110%;
+  min-height: 100%;
   background-color: map-get($theme-colors, 'light' );
   opacity: 0;
   padding-left: 10%; padding-right: 10%;
+  transform: none !important;
   @include desktop {
     padding-left: 12.5%; padding-right: 12.5%;
   }
@@ -473,7 +475,6 @@ $lang-percent: (
 .circle {
   position: relative;
   width: $circle-size; height: $circle-size;
-  background: #e54c22;
   border-radius: 50%;
   text-align: center;
   overflow: hidden;
@@ -615,7 +616,7 @@ $lang-percent: (
 .motion-rotate div:nth-child(3) { animation: rotate 0.6s ease-in-out 1.5s forwards; }
 .motion-rotate div:nth-child(4) { animation: rotate 0.6s ease-in-out 1.2s forwards; }
 
-.motion-page__in { animation: page-in 0.75s ease-out 0.0s forwards; }
+.motion-page__in { animation: page-in 0.5s ease-in-out 0.0s forwards; }
 
 .motion-contents__in { animation: slide-in-bottom 0.6s ease-out 0.5s forwards; }
 
@@ -639,7 +640,7 @@ $lang-percent: (
 
 @keyframes page-in {
   from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+  to   { transform: scaleX(1); background-color: map-get($theme-colors, 'light' )};
 }
 
 @keyframes slide-in-bottom {
