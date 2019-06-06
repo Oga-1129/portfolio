@@ -2,9 +2,6 @@
 
 elelineのポートフォリオです。
 
-### サイトURL
-https://eleline.me
-
 ### 言語・フレームワーク
 * HTML5
 * CSS3
