@@ -468,7 +468,6 @@ a {
     object-fit: cover;
     margin: 0 auto;
     text-align: center;
-    // border: double 8px map-get($theme-colors, gray );
     box-sizing: unset;
     @include desktop {
       max-height: 410px;
@@ -649,13 +648,24 @@ $lang-percent: (
   &__button {
     background-color: map-get($theme-colors, 'blue' );
     border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 18px;
+    padding: 10px 20px;
+    font-size: 20px; font-weight: bold;
     font-family: 'じゅん 501', serif;
     color: map-get($theme-colors, 'dark' );
+    border: none;
+    transition: .3s ease;
+    cursor: pointer;
+    @include desktop {
+      font-size: 24px;
+    }
     &:focus {
+      background-color: map-get($theme-darken-colors, 'blue' );
       border: none;
       outline: none;
+      box-shadow: 0 0 8px map-get($theme-colors, 'blue' );
+    }
+    &:hover {
+      background-color: map-get($theme-darken-colors, 'blue' );
     }
   }
 }

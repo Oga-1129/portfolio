@@ -271,22 +271,26 @@ charset="utf-8"></script>
 		  			this.isModalActive = !this.isModalActive;
 		  		},
           sendMail() {
-            const URL = './send.php';
-            const params = new URLSearchParams();
-            params.append('title', this.title);
-            params.append('mail', this.mail);
-            params.append('contents', this.contents);
+            if(this.title !== '' && this.mail !== '' && this.contents !== '') {
+              const URL = './send.php';
+              const params = new URLSearchParams();
+              params.append('title', this.title);
+              params.append('mail', this.mail);
+              params.append('contents', this.contents);
 
-            axios.post(URL, params)
-              .then(response => {
-                this.title = '';
-                this.mail = '';
-                this.contents = '';
-                alert("メールを送信しました！");
-              })
-              .catch(function (err) {
-                alert("メールが送信できませんでした！");
-              });
+              axios.post(URL, params)
+                .then(response => {
+                  this.title = '';
+                  this.mail = '';
+                  this.contents = '';
+                  alert("メールを送信しました！");
+                })
+                .catch(function (err) {
+                  alert("メールが送信できませんでした！");
+                });
+            }else {
+              alert("全て入力してからメールを送信してください");
+            }
           }
 		  	}
 		  });
