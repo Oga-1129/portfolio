@@ -209,7 +209,7 @@ charset="utf-8"></script>
           </div>
         </div>
 
-        <!-- Contact 実装中 modalNum === 10 -->
+        <!-- Contact -->
         <div class="page" :class="{'page-contact': modalNum === 4, 'motion-page__in': modalNum === 4}">
           <div class="contents text-center scroll-area" :class="{'motion-contents__in': modalNum === 4}">
             <div class="close close-contact vertical-center" @click="openItem(0)">
@@ -219,16 +219,16 @@ charset="utf-8"></script>
             
             <form class="form__area">
               <div>
-                <label class="form__label">件名</label>
-                <input type="text" class="form__text" placeholder="今日ランチに行こう" v-model="title" required>
+                <label class="form__label" v-cloak>件名 <span>{{ title.length }}/30</span></label>
+                <input type="text" class="form__text" placeholder="今日ランチに行こう" v-model="title" maxlength="30" required>
               </div>
               <div>
                 <label class="form__label">メールアドレス</label>
                 <input type="mail" class="form__text" placeholder="persona@gmail.com" v-model="mail" required>
               </div>
               <div>
-                <label class="form__label">本文</label>
-                <textarea　class="form__text" cols="30" rows="5" placeholder="伝えたいこと" v-model="contents" required></textarea>
+                <label class="form__label">本文 <span>{{ contents.length }}/255</span></label>
+                <textarea　class="form__text" cols="30" rows="5" placeholder="伝えたいこと" v-model="contents" maxlength="255" required></textarea>
               </div>
               <div style="text-align: center">
                 <button type="button" class="form__button" @click="sendMail">送信する</button>

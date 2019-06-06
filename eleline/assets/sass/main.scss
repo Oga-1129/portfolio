@@ -130,6 +130,10 @@ a {
   }
 }
 
+[v-cloak] {
+  display: none;
+}
+
 /*******************************************************************************************
  * common
  *******************************************************************************************/
@@ -644,6 +648,9 @@ $lang-percent: (
   &__label {
     color: map-get($theme-colors, 'dark' );
     font-size: 18px;
+    & > span {
+      color: map-get($theme-darken-colors, 'blue' );
+    }
   }
   &__button {
     background-color: map-get($theme-colors, 'blue' );
