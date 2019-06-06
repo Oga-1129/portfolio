@@ -604,7 +604,7 @@ $lang-percent: (
     padding-bottom: 7.5px;
     font-weight: bold;
     @include desktop {
-      font-size: 16px;
+      font-size: 12px;
     }
   }
   &-description {
@@ -614,17 +614,17 @@ $lang-percent: (
     padding-bottom: 7.5px;
     border-bottom: solid 1px map-get($theme-colors, 'green' );
     @include desktop {
-      font-size: 12px;
+      font-size: 8px;
     }
   }
   &-skill-list {
     text-align: left;
     padding-left: 20px;
     & > ul > li {
-      font-size: 2vw;
+      font-size: 4vw;
       line-height: 1.5;
       @include desktop {
-        font-size: 12px;
+        font-size: 24px;
       }
     }
   }
