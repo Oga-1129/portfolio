@@ -93,15 +93,15 @@ input, textarea {
   color: inherit;
   font-family: "じゅん 501" , serif;
   font-size: 1em;
-  padding: 0.4em 0.8em;
   width: 100%;
   padding: 7.5px;
   color: map-get($theme-colors, 'dark' );
   transition: 0.3s ease;
+  box-sizing: border-box;
   &:focus {
+    background-color: #FFFFFF;
     border: solid 1px map-get($theme-colors, 'blue' );
     outline: none;
-    outline-color: map-get($theme-colors, 'blue' );
     box-shadow: 0 0 8px map-get($theme-colors, 'blue' );
   }
   &::placeholder {
