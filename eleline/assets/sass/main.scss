@@ -244,8 +244,7 @@ a {
   }
 }
 
-/*** font awesome ***/
-.fas {
+.text-dark {
   color: map-get($theme-colors, 'dark' );
 }
 
@@ -677,6 +676,46 @@ $lang-percent: (
       background-color: map-get($theme-darken-colors, 'blue' );
     }
   }
+}
+
+.social {
+  justify-content: flex-end;
+}
+
+.social-button {
+  display: flex;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: .3s ease;
+  @include desktop {
+    width: 75px; height: 75px;
+  }
+  &:hover {
+    background-color: #ccc;
+    box-shadow: 0 0 8px map-get($theme-colors, 'blue' );
+  }
+  &:last-child {
+    margin-left: 30px;
+  }
+  & i {
+    font-size: 25px;
+    transition: 0.3s ease-out;
+    @include desktop {
+      font-size: 32.5px;
+    }
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+}
+
+.fa-twitter {
+  color: #1da1f3;
+}
+
+.fa-github {
+  color: #24292d;
 }
 
 /*** first view motion ***/
