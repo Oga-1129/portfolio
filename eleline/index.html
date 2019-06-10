@@ -29,7 +29,7 @@ charset="utf-8"></script>
       </div>
       
       <!-- Main Contents -->
-      <div id="apps" style="height: 100%">
+      <div id="apps" style="height: 100%;">
 
         <div class="vertical-center" style="height: 100%;">
           <div class="menu">
@@ -148,7 +148,7 @@ charset="utf-8"></script>
             <p class="page__title">Works</p>
             <p class="text-dark">カードを押すとそのサイトに飛びます</p>
 
-            <div class="d-block d-lg-none m-t-md">
+            <div class="d-block d-lg-none m-t-md m-b-md">
               <a href="https://eleline.me/Lycal/" target="_blank">
                 <div class="works-frame">
                   <div class="works-title">
@@ -228,7 +228,7 @@ charset="utf-8"></script>
                 <input type="mail" class="form__text" placeholder="persona@gmail.com" v-model="mail" required>
               </div>
               <div>
-                <label class="form__label">本文 <span>{{ contents.length }}/255</span></label>
+                <label class="form__label" v-cloak>本文 <span>{{ contents.length }}/255</span></label>
                 <textarea　class="form__text" cols="30" rows="5" placeholder="伝えたいこと" v-model="contents" maxlength="255" required></textarea>
               </div>
               <div style="text-align: center">
