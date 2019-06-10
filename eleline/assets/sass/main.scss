@@ -303,30 +303,22 @@ a {
       margin-bottom: 23%;
     }
     &:nth-child(1) {
-      // border-bottom: solid map-get($theme-darken-colors, red) 0.1em;
-      // animation: beat 1.5s ease-in 3.6s forwards;
       &::first-letter {
         color: map-get($theme-darken-colors, 'red');
       }
     }
     &:nth-child(2) {
-      // border-bottom: solid map-get($theme-darken-colors, yellow) 0.1em;
-      // animation: beat 1.5s ease-in 5.1s forwards;
       &::first-letter {
         color: map-get($theme-darken-colors, 'yellow');
       }
     }
     &:nth-child(3) {
-      // border-bottom: solid map-get($theme-darken-colors, green) 0.1em;
-      // animation: beat 1.5s ease-in 6.6s forwards;
       &::first-letter {
         color: map-get($theme-darken-colors, 'green');
       }
     }
     &:last-child {
       margin-bottom: 0;
-      // border-bottom: solid map-get($theme-darken-colors, blue) 0.1em;
-      // animation: beat 1.5s ease-in 8.1s forwards;
       &::first-letter {
         color: map-get($theme-darken-colors, 'blue');
       }
