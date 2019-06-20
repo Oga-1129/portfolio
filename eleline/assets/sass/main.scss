@@ -537,6 +537,7 @@ $lang-percent: (
         transform-origin: right $circle-size / 2;
         z-index: 2;
         animation: rotate-circle-left__#{$name} 0.75s linear 1.2s forwards;
+        will-change: transform;
         @include desktop {
           left: ($circle-size / 2 * -1) * 1.5;
           transform-origin: right ($circle-size / 2) * 1.5;
@@ -547,6 +548,7 @@ $lang-percent: (
         transform-origin: left $circle-size / 2;
         z-index: 3;
         animation: rotate-circle-right__#{$name} 0.75s linear 1.2s forwards;
+        will-change: transform;
         @include desktop {
           left: ($circle-size / 2) * 1.5;
           transform-origin: left ($circle-size / 2) * 1.5;
