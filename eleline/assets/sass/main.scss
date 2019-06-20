@@ -732,14 +732,14 @@ $lang-percent: (
 }
 
 /*** first view motion-rotate ***/
-.motion-rotate div { transform-origin: right top; transform: rotate(0deg);  }
+.motion-rotate div { transform-origin: right top; transform: rotate(0deg); will-change: transform;  }
 .motion-rotate div:nth-child(1) { background-color: map-get($theme-darken-colors, 'red'); }
 .motion-rotate div:nth-child(2) { background-color: map-get($theme-darken-colors, 'yellow'); }
 .motion-rotate div:nth-child(3) { background-color: map-get($theme-darken-colors, 'green'); }
 .motion-rotate div:nth-child(4) { background-color: map-get($theme-darken-colors, 'blue'); }
 
 /*** page in motion ***/
-.motion-page__in { transform-origin: right; }
+.motion-page__in { transform-origin: right; will-change: transform; }
 
 /*******************************************************************************************
  * animation
@@ -751,7 +751,7 @@ $lang-percent: (
 
 .motion-page__in { animation: page-in 0.5s linear 0.0s forwards; }
 
-.motion-contents__in { animation: slide-in-bottom 0.7s ease-out 0.35s forwards; }
+.motion-contents__in { animation: slide-in-bottom 0.7s ease-out 0.35s forwards; will-change: transform; }
 
 /*******************************************************************************************
  * keyframes
