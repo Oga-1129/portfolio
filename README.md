@@ -7,6 +7,3 @@ elelineのポートフォリオです。
 * CSS3
 * Vue(JavaScript)
 * PHP
-
-### データベース
-MySQL
